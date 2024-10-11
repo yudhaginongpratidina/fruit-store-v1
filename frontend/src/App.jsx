@@ -4,6 +4,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // PAGES
 import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+import Account from "./pages/Account";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 import NotFound from "./pages/NotFound";
 
 // STYLES
@@ -15,6 +21,10 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
