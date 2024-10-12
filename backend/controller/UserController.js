@@ -27,7 +27,7 @@ class UserController {
             }
 
             if (password !== confirmPassword) {
-                return res.status(400).json({ message: "Password doesn't match" })
+                return res.status(400).json({ message: "Password doesnt match" })
             }
 
             const createUser = await prismaClient.user.create({
@@ -72,7 +72,7 @@ class UserController {
             }
 
             if (password !== findData.password) {
-                return res.status(400).json({ message: "Password doesn't match" })
+                return res.status(400).json({ message: "Password doesnt match" })
             }
 
             return res.status(200).json({ message: "Login successfully", data: findData.id })

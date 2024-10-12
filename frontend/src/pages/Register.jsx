@@ -53,6 +53,7 @@ export default function Register() {
 
                 <input
                     type="email"
+                    name="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -61,6 +62,7 @@ export default function Register() {
 
                 <input
                     type="password"
+                    name="password"
                     placeholder="******"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -69,6 +71,7 @@ export default function Register() {
 
                 <input
                     type="password"
+                    name="confirmPassword"
                     placeholder="******"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -76,7 +79,7 @@ export default function Register() {
                 />
 
 
-                <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4">
+                <button id="submit" type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4">
                     {loading ? "Loading..." : "Register"}
                 </button>
 

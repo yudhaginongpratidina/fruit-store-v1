@@ -159,7 +159,7 @@ export default function Category() {
         <MainLayout className="w-full min-h-screen py-16 px-4 flex justify-center bg-gray-200">
             <div className="w-full max-w-screen-sm bg-white">
                 <div className="border-b-2 border-blue-500 p-4">
-                    <h1 className="text-lg font-medium">FRUIT CATEGORY</h1>
+                    <h1 id="title_page" className="text-lg font-medium">FRUIT CATEGORY</h1>
                 </div>
                 <div className="w-full p-4 flex flex-col gap-4">
                     <div className="w-full">
@@ -172,6 +172,7 @@ export default function Category() {
                             {edit && (     
                                 <input
                                     type="text"
+                                    name="categoryId"
                                     placeholder="Category Id"
                                     value={categoryId}
                                     onChange={(e) => setCategoryId(e.target.value)}
@@ -181,12 +182,14 @@ export default function Category() {
                             )}
                             <input
                                 type="text"
+                                name="categoryName"
                                 placeholder="Category Name"
                                 value={categoryName}
                                 onChange={(e) => setCategoryName(e.target.value)}
                                 className="w-full p-2 border mb-4 outline-none focus:border-blue-500 rounded"
                             />
                             <button
+                                id="submit"
                                 type="submit"
                                 className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4"
                             >

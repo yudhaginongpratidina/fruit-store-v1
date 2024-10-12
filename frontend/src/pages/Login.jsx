@@ -57,12 +57,13 @@ export default function Login() {
     return (
         <div className="w-full min-h-screen px-4 flex items-center justify-center bg-gray-200">
             <form onSubmit={handleSubmit} className="w-full max-w-screen-sm py-6 px-4 rounded-sm bg-white">
-                <h1 className="text-lg font-medium uppercase mb-4">Login</h1>
+                <h1 id="title" className="text-lg font-medium uppercase mb-4">Login</h1>
 
                 {error && <p className="text-red-500 mb-4">{message}</p>}
                 {success && <p className="text-green-500 mb-4">{message}</p>}
 
                 <input
+                    name="email"
                     type="email"
                     placeholder="Email"
                     value={email}
@@ -71,6 +72,7 @@ export default function Login() {
                 />
 
                 <input
+                    name="password"
                     type="password"
                     placeholder="******"
                     value={password}
@@ -78,12 +80,12 @@ export default function Login() {
                     className="w-full p-2 border mb-4 outline-none focus:border-blue-500"
                 />
 
-                <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4">
+                <button id="submit" type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4">
                     {loading ? "Loading..." : "Login"}
                 </button>
 
                 <div className="w-full flex justify-center">
-                    <Link to={"/register"} className="text-blue-500">I dont have an account</Link>
+                    <Link id="register" to={"/register"} className="text-blue-500">I dont have an account</Link>
                 </div>
             </form>
         </div>
