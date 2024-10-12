@@ -7,6 +7,11 @@ class UserController {
         const { name, email, password, confirmPassword } = req.body;
 
         try {
+
+            if (name === "" || email === "" || password === "" || confirmPassword === "") {
+                return res.status(400).json({ message: "Please fill all the fields" })
+            }
+
             const data_exist = await prismaClient.user.findFirst({
                 where: {
                     email
@@ -46,6 +51,11 @@ class UserController {
         const {email, password} = req.body
 
         try {
+
+            if (email === "" || password === "") {
+                return res.status(400).json({ message: "Please fill all the fields" })
+            }
+            
             const findData = await prismaClient.user.findFirst({
                 where: {
                     email

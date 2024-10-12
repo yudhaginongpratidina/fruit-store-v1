@@ -10,6 +10,9 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
+import Category from "./pages/Category";
+import Fruit from "./pages/Fruit";
+
 import NotFound from "./pages/NotFound";
 
 // STYLES
@@ -25,6 +28,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/fruit" element={<Fruit />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

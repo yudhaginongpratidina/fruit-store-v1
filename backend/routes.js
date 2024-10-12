@@ -1,5 +1,7 @@
 import express from "express";
 import UserController from "./controller/UserController.js";
+import CategoryController from "./controller/CategoryController.js";
+import ProductController from "./controller/ProductController.js";
 
 const router = express.Router();
 
@@ -10,18 +12,18 @@ router.get("/account/:id", UserController.account)
 router.patch("/account/:id/update_password", UserController.updatePassword)
 
 // CATEGORY PRODUCT
-router.get("/category", (req, res) => {})
-router.get("/category/:id", (req, res) => {})
-router.post("/category", (req, res) => {})
-router.patch("/category/:id", (req, res) => {})
-router.delete("/category/:id", (req, res) => {})
+router.get("/category", CategoryController.getCategory)
+router.get("/category/:id", CategoryController.getCategoryById)
+router.post("/category", CategoryController.createCategory)
+router.patch("/category/:id", CategoryController.updateCategory)
+router.delete("/category/:id", CategoryController.deleteCategory)
 
 // PRODUCT
-router.get("/product", (req, res) => {})
-router.get("/product/:id", (req, res) => {})
-router.post("/product", (req, res) => {})
-router.patch("/product/:id", (req, res) => {})
-router.delete("/product/:id", (req, res) => {})
+router.get("/product", ProductController.getProduct)
+router.get("/product/:id", ProductController.getProductById)
+router.post("/product", ProductController.createProduct)
+router.patch("/product/:id", ProductController.updateProduct)
+router.delete("/product/:id", ProductController.deleteProduct)
 
 
 export default router
