@@ -36,6 +36,10 @@ APPICATION_PORT=4000
 DATABASE_URL="mysql://root:@localhost:3306/toko_buah"
 ```
 
+```bash
+npx prisma db push
+```
+
 ### B. FRONTEND
 
 ```bash
@@ -61,6 +65,12 @@ npm run dev
 
 ```bash
 npm run dev
+```
+
+- Copy URL beriku dan buka di browser
+
+```bash
+http://localhost:5173/
 ```
 
 ## TECH STACK
