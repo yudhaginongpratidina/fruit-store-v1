@@ -14,6 +14,7 @@ import Category from "./pages/Category";
 import Fruit from "./pages/Fruit";
 
 import NotFound from "./pages/NotFound";
+import Belajar from "./pages/Belajar";
 
 // STYLES
 import "./styles/index.css";
@@ -30,6 +31,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/register" element={<Register />} />
         <Route path="/category" element={<Category />} />
         <Route path="/fruit" element={<Fruit />} />
+        <Route path="/belajar" element={<Belajar />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

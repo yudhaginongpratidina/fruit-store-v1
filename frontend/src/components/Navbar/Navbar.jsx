@@ -1,6 +1,6 @@
 // LIBS
-import { useState } from "react";
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 // ICONS
 import { FaShoppingCart } from "react-icons/fa";
@@ -10,13 +10,36 @@ import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
 
-    const [isLogin] = useState(true);
+    const Login = localStorage.getItem("isLogin");
+    console.log(Login);
+    const [isLogin, setIsLogin] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleMenuToggle = (e) => {
         e.preventDefault();
         setIsMenuOpen(!isMenuOpen);
     }
+
+    const logOut = (e) => {
+        e.preventDefault();
+        localStorage.setItem("isLogin", false);
+        localStorage.setItem("id", null);
+        navigate("/login");
+    }
+
+    useEffect(() => {
+        const loginStatus = localStorage.getItem("isLogin");
+        console.log(loginStatus);
+        
+
+        if (loginStatus === "true") {
+            setIsLogin(true);
+        } else {
+            setIsLogin(false);
+        }
+    }, [isLogin])
 
     return (
         <nav className="fixed top-0 z-10 w-full">
@@ -44,9 +67,14 @@ export default function Navbar() {
                 <div className="hidden md:flex items-center gap-4">
                     <Link to={"/"} className="text-lg font-medium hover:text-blue-500">Home</Link>
                     {isLogin
-                        ? <Link to={"/"} className="text-lg font-medium hover:text-blue-500">History</Link>
+                        ? <Link to={"/fruit"} className="text-lg font-medium hover:text-blue-500">Fruit</Link>
                         : null
                     }
+                    {isLogin
+                        ? <Link to={"/category"} className="text-lg font-medium hover:text-blue-500">Category</Link>
+                        : null
+                    }
+                    
                     {isLogin
                         ? null
                         : <Link to={"/login"} className="py-1.5 px-4 text-lg font-medium text-white bg-blue-500 hover:bg-blue-600">Login</Link>
@@ -66,10 +94,19 @@ export default function Navbar() {
                 <div className="w-full md:hidden px-4 py-6 flex flex-col gap-4 bg-white">
                     <Link to={"/"} className="text-lg font-medium hover:text-blue-500">Home</Link>
                     {isLogin
-                        ? <Link to={"/"} className="text-lg font-medium hover:text-blue-500">History</Link>
+                        ? <Link to={"/fruit"} className="text-lg font-medium hover:text-blue-500">Fruit</Link>
                         : null
                     }
-                    <Link to={"/login"} className="py-1.5 px-4 text-lg font-medium text-white bg-blue-500 hover:bg-blue-600">Login</Link>
+                    {isLogin
+                        ? <Link to={"/category"} className="text-lg font-medium hover:text-blue-500">Category</Link>
+                        : null
+                    }
+
+                    {
+                        isLogin
+                            ? <button onClick={logOut} className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">Log Out</button>
+                            : <Link to={"/login"} className="py-1.5 px-4 text-lg font-medium text-white bg-blue-500 hover:bg-blue-600">Login</Link>
+                    }
                 </div>
             )}
         </nav>

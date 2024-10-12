@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 
 import MainLayout from "../components/Layouts/MainLayout"
+import { useNavigate } from "react-router-dom";
 
 export default function Fruit() {
 
@@ -177,10 +178,17 @@ export default function Fruit() {
         }
     }
 
+    const navigate = useNavigate();
+
     useEffect(() => {
+        const isLogin = localStorage.getItem("isLogin");
+        if (isLogin === "false") {
+            navigate("/login"); 
+        }
+
         getAllFruits();
         getAllCategory();
-    }, [])
+    }, [navigate]);
 
     // console.log(fruits);
 

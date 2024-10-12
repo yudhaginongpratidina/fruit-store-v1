@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import MainLayout from "../components/Layouts/MainLayout";
+import { useNavigate } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 
@@ -145,9 +146,14 @@ export default function Category() {
         }
     };
 
+    const navigate = useNavigate();
     useEffect(() => {
+        const isLogin = localStorage.getItem("isLogin");
+        if (isLogin === "false") {
+            navigate("/login"); 
+        }
         getAllCategory();
-    }, []);
+    }, [navigate]);
 
     return (
         <MainLayout className="w-full min-h-screen py-16 px-4 flex justify-center bg-gray-200">

@@ -1,16 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
+
+    // USE STATE
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+
+    // FUNCTION LOGIN
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
@@ -25,10 +29,18 @@ export default function Login() {
                 password
             });
 
+            console.log(res.data.data);
+
             setLoading(false);
             setSuccess(true);
             setMessage(res.data.message);
-            console.log(res.data);
+
+            // simpan datanya id di local storage
+            localStorage.setItem("id", res.data.data);
+            localStorage.setItem("isLogin", true);
+
+            navigate("/");
+
         } catch (error) {
             setLoading(false);
             if (error.response) {
